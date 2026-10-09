@@ -1,0 +1,619 @@
+.account-page {
+  width: min(100%, 1450px);
+  margin: 0 auto;
+  padding: 32px clamp(18px, 4vw, 55px) 60px;
+  color: #0f1111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.account-page * {
+  box-sizing: border-box;
+}
+
+.account-header {
+  min-height: 145px;
+  padding: 30px 34px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border: 1px solid #dfe5ec;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.04);
+}
+
+.account-label,
+.section-label {
+  margin: 0 0 7px;
+  color: #146eb4;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.7px;
+}
+
+.account-header h2 {
+  margin: 0;
+  color: #0f1111;
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.account-subtitle {
+  margin: 9px 0 0;
+  color: #5f6b7a;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+.account-header-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #eff6ff;
+  font-size: 27px;
+}
+
+.account-message {
+  margin-bottom: 20px;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: #1e40af;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.account-message button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.profile-card,
+.addresses-section,
+.account-order-shortcut {
+  margin-bottom: 24px;
+  padding: 26px;
+  border: 1px solid #dfe5ec;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.04);
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 22px;
+}
+
+.profile-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #eff6ff;
+  font-size: 21px;
+}
+
+.profile-card-header h3,
+.addresses-heading h3,
+.form-heading h3 {
+  margin: 0;
+  color: #0f1111;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 900;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.profile-field {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #e1e7ef;
+  border-radius: 11px;
+  background: #f8fafc;
+}
+
+.profile-field span {
+  display: block;
+  margin-bottom: 7px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.profile-field strong {
+  display: block;
+  overflow: hidden;
+  color: #0f1111;
+  font-size: 14px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.role-badge {
+  display: inline-block !important;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8 !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+}
+
+.addresses-heading {
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.addresses-heading p:not(.section-label) {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.add-address-button,
+.no-addresses button {
+  padding: 11px 17px;
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.add-address-button:hover,
+.no-addresses button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.address-form {
+  margin-bottom: 22px;
+  padding: 24px;
+  border: 1px solid #bfdbfe;
+  border-radius: 13px;
+  background: #f8fbff;
+}
+
+.form-heading {
+  margin-bottom: 22px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.close-form-button {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.address-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-group {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  color: #334155;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.form-group input {
+  width: 100%;
+  min-height: 43px;
+  padding: 11px 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.default-address {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.default-address input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #2563eb;
+}
+
+.form-actions {
+  margin-top: 22px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancel-address-button,
+.save-address-button {
+  min-height: 40px;
+  padding: 10px 17px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.cancel-address-button {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+}
+
+.save-address-button {
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.save-address-button:hover {
+  background: #1d4ed8;
+}
+
+.save-address-button:disabled,
+.cancel-address-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.address-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.address-card {
+  min-width: 0;
+  padding: 21px;
+  border: 1px solid #dbe3ef;
+  border-radius: 13px;
+  background: #ffffff;
+  transition: 0.18s ease;
+}
+
+.address-card:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.08);
+  transform: translateY(-2px);
+}
+
+.address-card-top {
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.address-location-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #eff6ff;
+  font-size: 18px;
+}
+
+.address-card h4 {
+  margin: 0 0 5px;
+  color: #0f1111;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.default-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.address-content {
+  padding: 16px 0;
+}
+
+.address-content p {
+  margin: 4px 0;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.address-phone {
+  margin-top: 12px !important;
+  color: #0f1111 !important;
+  font-weight: 900 !important;
+}
+
+.address-actions {
+  display: flex;
+  gap: 9px;
+}
+
+.address-actions button {
+  padding: 8px 12px;
+  border: 1px solid #dbe3ef;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.address-actions button:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.address-actions .delete-address:hover {
+  border-color: #ef4444;
+  color: #dc2626;
+}
+
+.address-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.no-addresses {
+  min-height: 250px;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px dashed #cbd5e1;
+  border-radius: 13px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.no-address-icon {
+  font-size: 42px;
+}
+
+.no-addresses h3 {
+  margin: 12px 0 5px;
+  color: #0f1111;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.no-addresses p {
+  margin: 0 0 17px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.account-order-shortcut {
+  padding: 21px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.account-order-shortcut > div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.shortcut-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: #eff6ff;
+  font-size: 20px;
+}
+
+.account-order-shortcut h3 {
+  margin: 0;
+  color: #0f1111;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.account-order-shortcut p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.account-order-shortcut > button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.account-order-shortcut > button:hover {
+  background: #1d4ed8;
+}
+
+.account-loading {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.account-loading p {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.account-spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid #dbeafe;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: accountSpin 0.8s linear infinite;
+}
+
+@keyframes accountSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1050px) {
+  .profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .address-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .account-page {
+    padding: 20px 12px 40px;
+  }
+
+  .account-header {
+    padding: 22px;
+    align-items: flex-start;
+  }
+
+  .account-header h2 {
+    font-size: 27px;
+  }
+
+  .addresses-heading,
+  .account-order-shortcut {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .add-address-button {
+    width: 100%;
+  }
+
+  .address-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: auto;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-order-shortcut {
+    gap: 15px;
+  }
+
+  .account-order-shortcut > button {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-address-button,
+  .save-address-button {
+    width: 100%;
+  }
+}
