@@ -1516,24 +1516,28 @@ const handleDeleteCategory = async (categoryId) => {
       type="button"
       className="edit-product-button"
       onClick={() => {
-        setEditingProductId(product.id);
+        // Use the full product record where available because the
+        // inventory analytics response may contain only summary fields.
+        const selectedProduct =
+          products.find(
+            (item) => Number(item.id) === Number(product.id)
+          ) || product;
+
+        setEditingProductId(selectedProduct.id);
         setProductForm({
-          category_id:
-            product.category_id || "",
-          name:
-            product.name || "",
-          description:
-            product.description || "",
-          price:
-            product.price || "",
-          discount:
-            product.discount || "0",
-          stock:
-            product.stock ?? "",
-          image_url:
-            product.image_url || ""
+          category_id: selectedProduct.category_id ?? "",
+          name: selectedProduct.name ?? "",
+          description: selectedProduct.description ?? "",
+          price: selectedProduct.price ?? "",
+          discount: selectedProduct.discount ?? "0",
+          stock: selectedProduct.stock ?? "",
+          image_url: selectedProduct.image_url ?? ""
         });
+
+        // The product form lives in the Products section.
+        setActiveSection("products");
         setShowProductForm(true);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }}
     >
       Edit
