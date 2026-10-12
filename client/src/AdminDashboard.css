@@ -1248,3 +1248,25 @@ body,
     padding: 16px 12px 40px;
   }
 }
+
+
+
+.admin-logout {
+  display: block;
+  width: calc(100% - 30px);
+  margin: 24px 15px 16px;
+  padding: 13px 16px;
+  background: #111c32;
+  color: #ffffff;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.admin-logout:hover {
+  background: #dc2626;
+}

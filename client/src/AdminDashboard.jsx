@@ -762,6 +762,19 @@ const handleDeleteCategory = async (categoryId) => {
           <span>📈</span>
           Analytics
         </button>
+        
+<button
+  type="button"
+  className="admin-logout"
+  onClick={() => {
+    localStorage.removeItem("customerToken");
+    localStorage.removeItem("userRole");
+    window.location.reload();
+  }}
+>
+  🚪 Logout
+</button>
+
       </nav>
     </aside>
     {/* MAIN CONTENT */}
