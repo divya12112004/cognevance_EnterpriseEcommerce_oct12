@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import "./Shop.css";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://enterprise-ecommerce-oct.onrender.com/api";
 
 function Shop({ token, onCartChange }) {
   const [products, setProducts] = useState([]);

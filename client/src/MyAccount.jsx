@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./MyAccount.css";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://enterprise-ecommerce-oct.onrender.com/api";
 
 function MyAccount({ token, onOrders }) {
   const [profile, setProfile] = useState(null);

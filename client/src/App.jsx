@@ -8,7 +8,7 @@ import Checkout from "./Checkout";
 import MyOrders from "./MyOrders";
 import MyAccount from "./MyAccount";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://enterprise-ecommerce-oct.onrender.com/api";
 
 function App() {
   const [email, setEmail] = useState("customer@example.com");

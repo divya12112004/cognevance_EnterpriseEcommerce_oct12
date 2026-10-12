@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import "./MyOrders.css";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://enterprise-ecommerce-oct.onrender.com/api";
 
 const filters = [
   { key: "ALL", label: "All Orders" },

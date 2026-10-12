@@ -12,7 +12,7 @@ import {
   Legend
 } from "recharts";
 import "./AdminDashboard.css";
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://enterprise-ecommerce-oct.onrender.com/api";
 function AdminDashboard({ token }) {
   // ==========================================
   // STATE
