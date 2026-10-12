@@ -13,6 +13,12 @@ const API_URL = "https://enterprise-ecommerce-oct.onrender.com/api";
 function App() {
   const [email, setEmail] = useState("customer@example.com");
   const [password, setPassword] = useState("Customer@12345");
+  
+const [isRegistering, setIsRegistering] = useState(false);
+const [registerName, setRegisterName] = useState("");
+const [registerEmail, setRegisterEmail] = useState("");
+const [registerPassword, setRegisterPassword] = useState("");
+const [confirmPassword, setConfirmPassword] = useState("");
 
   const [token, setToken] = useState(
     localStorage.getItem("customerToken") || ""
@@ -142,6 +148,62 @@ function App() {
       setLoading(false);
     }
   };
+
+  
+const handleRegister = async (e) => {
+  e.preventDefault();
+
+  if (registerPassword !== confirmPassword) {
+    setMessage("Passwords do not match.");
+    return;
+  }
+
+  if (registerPassword.length < 6) {
+    setMessage("Password must be at least 6 characters.");
+    return;
+  }
+
+  setLoading(true);
+  setMessage("");
+
+  try {
+    const response = await fetch(
+      "https://enterprise-ecommerce-oct.onrender.com/api/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: registerName.trim(),
+          email: registerEmail.trim(),
+          password: registerPassword
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+      throw new Error(data.message || "Registration failed.");
+    }
+
+    setEmail(registerEmail.trim());
+    setPassword("");
+    setRegisterName("");
+    setRegisterEmail("");
+    setRegisterPassword("");
+    setConfirmPassword("");
+    setIsRegistering(false);
+    setMessage("Account created successfully! Please sign in.");
+
+  } catch (error) {
+    setMessage(error.message || "Unable to create your account.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   // =====================================================
   // CREATE PAYMENT
@@ -754,58 +816,161 @@ setMessage("");
             ✦ Enterprise<span className="brand-highlight">.</span>
           </div>
 
-          <div className="login-heading">
-            <span className="login-eyebrow">WELCOME BACK</span>
-            <h2>Sign in to your account</h2>
-            <p>Enter your details to continue shopping.</p>
-          </div>
+          
+<div className="login-heading">
+  <span className="login-eyebrow">
+    {isRegistering ? "JOIN ENTERPRISE" : "WELCOME BACK"}
+  </span>
 
-          <form className="premium-login-form" onSubmit={handleLogin}>
-            <div className="login-field">
-              <label htmlFor="login-email">Email address</label>
-              <div className="login-input-wrap">
-                <span className="input-icon">✉</span>
-                <input
-                  id="login-email"
-                  type="email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  autoComplete="username"
-                  required
-                />
-              </div>
-            </div>
+  <h2>
+    {isRegistering
+      ? "Create your account"
+      : "Sign in to your account"}
+  </h2>
 
-            <div className="login-field">
-              <label htmlFor="login-password">Password</label>
-              <div className="login-input-wrap">
-                <span className="input-icon">♙</span>
-                <input
-                  id="login-password"
-                  type="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  autoComplete="current-password"
-                  required
-                />
-              </div>
-            </div>
+  <p>
+    {isRegistering
+      ? "Create an account to start shopping."
+      : "Enter your details to continue shopping."}
+  </p>
+</div>
 
-            <button
-              className="premium-login-button"
-              type="submit"
-              disabled={loading}
-            >
-              {loading ? "Signing in..." : "Sign in to continue"}
-              {!loading && <span>→</span>}
-            </button>
-          </form>
+<form
+  className="premium-login-form"
+  onSubmit={isRegistering ? handleRegister : handleLogin}
+>
+  {isRegistering && (
+    <div className="login-field">
+      <label htmlFor="register-name">Full name</label>
+      <div className="login-input-wrap">
+        <span className="input-icon">♙</span>
+        <input
+          id="register-name"
+          type="text"
+          placeholder="Enter your full name"
+          value={registerName}
+          onChange={(e) => setRegisterName(e.target.value)}
+          autoComplete="name"
+          required
+        />
+      </div>
+    </div>
+  )}
+
+  <div className="login-field">
+    <label htmlFor="login-email">Email address</label>
+    <div className="login-input-wrap">
+      <span className="input-icon">✉</span>
+      <input
+        id="login-email"
+        type="email"
+        placeholder="you@example.com"
+        value={isRegistering ? registerEmail : email}
+        onChange={(e) =>
+          isRegistering
+            ? setRegisterEmail(e.target.value)
+            : setEmail(e.target.value)
+        }
+        autoComplete={isRegistering ? "email" : "username"}
+        required
+      />
+    </div>
+  </div>
+
+  <div className="login-field">
+    <label htmlFor="login-password">Password</label>
+    <div className="login-input-wrap">
+      <span className="input-icon">♙</span>
+      <input
+        id="login-password"
+        type="password"
+        placeholder="Enter your password"
+        value={isRegistering ? registerPassword : password}
+        onChange={(e) =>
+          isRegistering
+            ? setRegisterPassword(e.target.value)
+            : setPassword(e.target.value)
+        }
+        autoComplete={isRegistering ? "new-password" : "current-password"}
+        minLength={isRegistering ? 6 : undefined}
+        required
+      />
+    </div>
+  </div>
+
+  {isRegistering && (
+    <div className="login-field">
+      <label htmlFor="confirm-password">Confirm password</label>
+      <div className="login-input-wrap">
+        <span className="input-icon">♙</span>
+        <input
+          id="confirm-password"
+          type="password"
+          placeholder="Re-enter your password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          autoComplete="new-password"
+          minLength={6}
+          required
+        />
+      </div>
+    </div>
+  )}
+
+  <button
+    className="premium-login-button"
+    type="submit"
+    disabled={loading}
+  >
+    {loading
+      ? (isRegistering ? "Creating account..." : "Signing in...")
+      : (isRegistering ? "Create account" : "Sign in to continue")}
+    {!loading && <span>→</span>}
+  </button>
+</form>
+
+
+          
+          
+<div className="signup-prompt">
+  {isRegistering ? (
+    <>
+      <span>Already have an account?</span>
+      <button
+        type="button"
+        className="signup-link"
+        onClick={() => {
+          setIsRegistering(false);
+          setMessage("");
+        }}
+      >
+        Sign in
+      </button>
+    </>
+  ) : (
+    <>
+      <span>New to Enterprise?</span>
+      <button
+        type="button"
+        className="signup-link"
+        onClick={() => {
+          setIsRegistering(true);
+          setMessage("");
+        }}
+      >
+        Create an account
+      </button>
+    </>
+  )}
+</div>
+
+
+          
+
 
           {message && (
             <div className="premium-login-message" role="status">
-              {message}
+              s{message}
             </div>
           )}
 

@@ -1231,3 +1231,30 @@
     padding: 24px 16px;
   }
 }
+
+
+.signup-prompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 24px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.signup-link {
+  border: none;
+  background: transparent;
+  color: #b18a36;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.signup-link:hover {
+  color: #1b3157;
+  text-decoration: underline;
+}
+
