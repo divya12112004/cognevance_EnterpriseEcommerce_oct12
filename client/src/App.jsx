@@ -175,12 +175,15 @@ function App() {
         );
       }
 
-      setSelectedOrder(order);
-      setPaymentOrder(data.payment);
+     
+setSelectedOrder(order);
+setPaymentOrder(data.payment);
 
-      setMessage(
-        "Payment order created successfully."
-      );
+// Automatically navigate to My Account
+setCustomerSection("account");
+
+setMessage("");
+
 
     } catch (error) {
       console.error(error);
